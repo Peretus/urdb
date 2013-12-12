@@ -39,4 +39,26 @@ describe Movie do
       end   
     end
   end
+
+  describe '.average_rating' do
+    let(:movie2) { Movie.new}
+
+    context "when all movies can be found on Rotten Tomatoes" do
+      it "returns the average audience_score for all movies" do
+        allow(movie2).to receive(:audience_score).and_return(50)
+        allow(movie).to receive(:audience_score).and_return(100)
+        
+        expect(Movie.all.average_rating).to eq 75
+      end 
+    end
+
+    context "when some movies are not found on Rotten Tomatoes" do
+      it "returns the average audience_score of the movies that were found"
+    end
+
+    context "when no movies are found on Rotten Tomatoes" do
+      it "returns nil"
+    end
+  end
+
 end
