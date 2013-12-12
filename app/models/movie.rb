@@ -12,4 +12,15 @@ class Movie < ActiveRecord::Base
   def snippet
     description.to_s.truncate 50
   end
+
+  def average_rating
+    scores = []
+    movies = Movie.all
+    movies.each do |movie|
+      scores << movie.ratings.audience_score
+    end
+    scores.reduce(:+)
+  end
+
 end
+
