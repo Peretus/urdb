@@ -29,7 +29,7 @@ describe Movie do
     end
   end
 
-  describe '#audience_rating' do
+  describe '#rotten_finder' do
     let(:rotten_finder_return) { OpenStruct.new(ratings: OpenStruct.new(audience_score: 84)) }
     context "when Movie is found on Rotten Tomatoes" do
       it "returns the audience score for the Movie" do
