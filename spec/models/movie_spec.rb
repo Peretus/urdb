@@ -19,5 +19,13 @@ describe Movie do
         expect(movie.snippet).to eq "This is a description that is clearly longer th..."
       end
     end
+
+    context "when there is no description" do
+      it 'returns an empty string' do
+        allow(movie).to receive(:description).and_return()
+
+        expect(movie.snippet).to eq ""
+      end
+    end
   end
 end
