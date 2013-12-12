@@ -35,7 +35,7 @@ describe Movie do
       it "returns the audience score for the Movie" do
         allow(movie).to receive(:rotten_finder).and_return(rotten_finder_return)
 
-        expect(movie.audience_rating).to eq(84)
+        expect(rotten_finder_return.ratings.audience_scoregg).to eq(84)
       end   
     end
   end
