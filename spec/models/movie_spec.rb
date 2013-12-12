@@ -1,5 +1,23 @@
 require 'spec_helper'
 
 describe Movie do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:movie) {Movie.new}
+
+  describe "#snippet" do
+    context "When description is less than or equal to 50 chars" do
+      it "returns the full description" do
+        allow(movie).to receive(:description).and_return("Hey there I'm less than 50")
+
+        expect(movie.snippet).to eq("Hey there I'm less than 50")
+      end
+    end
+
+    context "when the description is greater than 50 chars" do
+      it 'returns the first 47 chars followed by elipses' do
+        allow(movie).to receive(:description).and_return("This is a description that is clearly longer than 50.")
+
+        expect(movie.snippet).to eq "This is a description that is clearly longer th..."
+      end
+    end
+  end
 end
